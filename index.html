@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotics Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.153.0/build/three.min.js"></script>
+    <script src="three-animation.js" defer></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">Robotics Portfolio</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section with 3D Animation -->
+    <section id="home" class="three-js-section">
+        <div id="three-js-container"></div>
+        <div class="content">
+          <h1 id="typewriter-text"></h1>
+        <p id="typewriter-subtext"></p>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <h2 >About Me</h2>
+        <p>I am a robotics enthusiast with experience in autonomous systems, object detection, and SLAM algorithms. My projects involve using technologies like ROS, Gazebo, and OpenCV to build intelligent robots.</p>
+        <a href="resume.pdf" class="button" target="_blank">View Resume</a>
+                <div class="social-links">
+                    <a href="https://github.com/Tr0612" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/ThanushraamSureshkumar" target="_blank">LinkedIn</a>
+                </div>
+    </section>
+<section id="experience">
+    <h2>Experience</h2>
+    <div class="timeline">
+        <div class="timeline-item left">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>Robotics Engineer Intern</h3>
+                <p><strong>ABC Robotics Company</strong> | Jan 2023 - Jun 2023</p>
+                <p>Developed object detection systems using YOLO and ROS2 for autonomous navigation.</p>
+            </div>
+        </div>
+        <div class="timeline-item right">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>Computer Vision Research Assistant</h3>
+                <p><strong>XYZ University</strong> | Sep 2022 - Dec 2022</p>
+                <p>Worked on implementing SLAM algorithms using OpenCV and Python for real-time mapping.</p>
+            </div>
+        </div>
+        <div class="timeline-item left">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>Machine Learning Intern</h3>
+                <p><strong>LMN Labs</strong> | Jun 2021 - Aug 2021</p>
+                <p>Explored machine learning algorithms for predictive maintenance in robotics systems.</p>
+            </div>
+        </div>
+    </div>
+</section>
+ <!-- Projects Section -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-gallery">
+            <div class="project-card">
+                <img src="project1.jpg" alt="Autonomous Rover">
+                <h3>Depth Estimation using Deep Learning</h3>
+                <p> </p>
+            </div>
+            <div class="project-card">
+                <img src="project2.jpg" alt="Object Recognition System">
+                <h3>Object Recognition System</h3>
+                <p>Implemented real-time object recognition with OpenCV and TensorFlow.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form id="contact-form">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <textarea id="message" placeholder="Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+            <div id="form-response"></div>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Robotics Portfolio. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
