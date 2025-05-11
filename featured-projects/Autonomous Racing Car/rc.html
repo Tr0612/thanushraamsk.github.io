@@ -32,7 +32,7 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="og:site_name" content="Thanushraam Suresh Kumar">
     <meta property="og:url" content="https://thanushraam/featured-projects/Autonomous Racing Car/">
-    <meta property="og:title" content="Autonomous Disinfection Robot | Thanushraam Suresh Kumar">
+    <meta property="og:title" content="Autonomous Racing Robot | Thanushraam Suresh Kumar">
     <meta property="og:description"
         content="Built a F1 style Racing Car ">
     <meta property="og:image" content="https://thanushraam/featured-projects/Autonomous Racing Car/featured.gif">
@@ -98,12 +98,56 @@
                 <p><em>Skills - ROS, C++, Detectron2, LiDAR, PCL, PyTorch, CUDA, Instance Segmentation, Image-LiDAR
                         Fusion, SLAM, Computer Networking</em></p>
                 <h2 id=overview>Overview</h2>
-                <p>This project features an F1-style autonomous race car inspired by Roborace, designed for high-speed,
-                    human-free racing. It uses LiDAR, cameras, and GPS-INS for real-time perception and localization,
-                    enabling accurate tracking and obstacle detection. A model predictive controller (MPC) ensures
-                    precise maneuvering at high speeds, while the racing strategy is optimized through onboard path
-                    planning. Built on ROS 2 and powered by edge computing, the system delivers low-latency performance
-                    in dynamic environments.</p>
+                <p>
+This project was part of an advanced robotics course where our team—<strong>Team Apollo</strong>—designed and deployed an F1-style autonomous vehicle using a Raspberry Pi-based DeepRacer platform. Originally intended to leverage SLAM and LiDAR-based navigation, the system was re-engineered mid-project due to hardware failure, pivoting fully to computer vision using OpenCV.
+</p>
+
+<h2 id="system">System Architecture</h2>
+<ul>
+  <li><strong>Compute Unit:</strong> Raspberry Pi 4 with remote access enabled via Tailscale VPN, allowing seamless collaboration.</li>
+  <li><strong>Vision:</strong> RPi Camera Module (OV5647), horizon-centered for optimal visual coverage.</li>
+  <li><strong>Steering:</strong> 15kg servo motor controlling a two-bar linkage for precise front wheel articulation.</li>
+  <li><strong>Drive System:</strong> All-wheel-drive (AWD) using a central drive motor and mechanical differentials.</li>
+  <li><strong>Telemetry:</strong> Live dashboard using ROS 2 WebSockets for streaming video, speed, steering angle, and CPU temperature.</li>
+</ul>
+
+<h2 id="implementation">Implementation Details</h2>
+<ul>
+  <li><strong>ROS 2 Architecture:</strong> Publisher/subscriber model used to stream color detection data (blue/red/green/yellow) and control signals.</li>
+  <li><strong>Line Following:</strong> Based on HSV filtering, the system identified colored lines using contour detection and tracked their centroids. A PID controller handled steering corrections based on positional error.</li>
+  <li><strong>Stop Sign Detection:</strong> Detected red-colored signs and halted motion for 4 seconds when the detected contour area exceeded a calibrated threshold.</li>
+  <li><strong>Speed Zone Handling:</strong> Reduced speed to 50% in red zones, and restored full speed in green zones, using color detection alone.</li>
+  <li><strong>Telemetry Interface:</strong> Displayed speed, steering, camera feed, and CPU temp using ROS topic subscriptions rendered in a web UI via HTML, CSS, and JavaScript.</li>
+</ul>
+
+<h2 id="performance">Performance</h2>
+<p>
+In three timed trial runs, the car recorded lap times of <strong>1:58</strong>, <strong>2:15</strong>, and <strong>2:12</strong>, averaging <strong>2:08 minutes</strong> with a standard deviation of 7.41s. The stop sign and speed limit sign features had ~80% reliability in optimal conditions.
+</p>
+
+<h2 id="challenges">Challenges Faced</h2>
+<h4>Hardware Issues</h4>
+<ul>
+  <li><strong>Fan Burnout:</strong> Improper PCB spacing caused the fan to burn out twice due to wiring obstruction. Resolved via a 3D-printed spacer.</li>
+  <li><strong>LiDAR Damage:</strong> USB port damage made the LiDAR unusable after attempted PCB repair. Forced pivot to vision-only system.</li>
+  <li><strong>Structural Crash:</strong> Robot crashed during tuning tests due to underestimating motor drift; camera & LiDAR mount were reprinted.</li>
+  <li><strong>Battery Lockout:</strong> The motor battery locked due to undervoltage and required replacement and reset cables.</li>
+</ul>
+
+<h4>Software Issues</h4>
+<ul>
+  <li><strong>Ubuntu SD Card Corruption:</strong> Required a complete OS reflash mid-project, causing rework and delay.</li>
+  <li><strong>Ghost ROS Topics:</strong> Unintended topic overlap caused image data from other robots to interfere with ours—solved by reconfiguring namespaces.</li>
+  <li><strong>Motor Drift:</strong> Speed values drifted over time (e.g., 0.0 no longer stopped the motor), leading to constant re-tuning.</li>
+</ul>
+
+<h2 id="lessons">Key Lessons</h2>
+<ul>
+  <li>Hardware assumptions can break easily—design fallback plans early.</li>
+  <li>ROS topic management is critical when multiple robots operate in a shared space.</li>
+  <li>Team agility matters as much as technical design—rapid pivots helped us deliver all 8 challenge points.</li>
+</ul>
+
                 <!-- INSERT VIDEO HERE -->
                 <!-- <div style=position:relative;padding-bottom:56.25%;height:0;overflow:hidden><iframe
                         src=https://www.youtube.com/embed/Hjzabal8oYw
