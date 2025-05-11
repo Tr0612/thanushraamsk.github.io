@@ -117,7 +117,9 @@ This project was part of an advanced robotics course where our team—<strong>Te
   <li><strong>Line Following:</strong> Based on HSV filtering, the system identified colored lines using contour detection and tracked their centroids. A PID controller handled steering corrections based on positional error.</li>
   <li><strong>Stop Sign Detection:</strong> Detected red-colored signs and halted motion for 4 seconds when the detected contour area exceeded a calibrated threshold.</li>
   <li><strong>Speed Zone Handling:</strong> Reduced speed to 50% in red zones, and restored full speed in green zones, using color detection alone.</li>
-  <li><strong>Telemetry Interface:</strong> Displayed speed, steering, camera feed, and CPU temp using ROS topic subscriptions rendered in a web UI via HTML, CSS, and JavaScript.</li>
+  <li><strong>Telemetry Interface:</strong> Displayed speed, steering, camera feed, and CPU temp using ROS topic subscriptions rendered in a web UI via HTML, CSS, and JavaScript.
+        <p><img src="./telemetry.png" alt></p>
+</li>
 </ul>
 
 <h2 id="performance">Performance</h2>
@@ -140,6 +142,7 @@ In three timed trial runs, the car recorded lap times of <strong>1:58</strong>, 
   <li><strong>Ghost ROS Topics:</strong> Unintended topic overlap caused image data from other robots to interfere with ours—solved by reconfiguring namespaces.</li>
   <li><strong>Motor Drift:</strong> Speed values drifted over time (e.g., 0.0 no longer stopped the motor), leading to constant re-tuning.</li>
 </ul>
+
 
 <h2 id="lessons">Key Lessons</h2>
 <ul>
